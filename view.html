@@ -1,0 +1,27 @@
+
+<div class="debug-panel">
+    <div class="debug-main">
+        <debug-controlbar :running="running" :debugging="debugging" :debug-helper="debugHelper" :runner-list="runnerList">
+        </debug-controlbar>
+        <div class="display-panel">
+            <debug-exceptionpanel :pause-data="pauseData">
+            </debug-exceptionpanel>
+            <debug-scopepanel :debug-helper="debugHelper" :initial-display="displayScope" :scopes="scopes" :initial-loadding-scope="loaddingScope" @loadding="loadScope" v-ref:scopepanel>
+            </debug-scopepanel>
+            <debug-watchpanel :debug-helper="debugHelper" @updatewatch="updateWatch" :initial-display="displayWatch" :initial-loadding-scope="loaddingWatch" :watch-expressions="watchExpressions" :initial-watch-input-box="watchInputBox" @loadding="loadWatch" v-ref:watchpanel>
+            </debug-watchpanel>
+            <debug-callframepanel :debug-helper="debugHelper" :initial-display="displayCallframe" :callframes="callframes" :initial-selected-callframe="selectedCallframe" @this="updateThis" @scope="updateScope" @loadding="loadScope" v-ref:callframepanel>
+            </debug-callframepanel>
+            <debug-breakpointpanel :initial-display="displayBreakpoint" :initial-pause-on-all-exceptions="pauseOnAllExceptions" :initial-pause-on-uncaught-exceptions="pauseOnUncaughtExceptions" :breakpoints="breakpoints" :debug-helper="debugHelper" v-ref:breakpointpanel>
+            </debug-breakpointpanel>
+            <debug-filepanel :initial-display="displayFile" :script-tree="scriptTree" :debug-helper="debugHelper">
+            </debug-filePanel>
+            <div class="space-panel">
+            </div>
+            <debug-consolepanel :debug-helper="debugHelper" :callframe0="callframes[0]" :initial-loadding-scope="loaddingConsole" :initial-display="displayConsole" :initial-consoles="consoles" @loadding="loadConsole" v-ref:consolepanel>
+            </debug-consolepanel>
+            <debug-mask :loadding="loadding" :spinner="true">
+            </debug-mask>
+        </div>
+    </div>
+</div>

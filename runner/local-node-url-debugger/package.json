@@ -1,0 +1,22 @@
+{
+  "name": "local-node-url-debugger",
+  "main": "./lib/local-node-url-debugger",
+  "version": "0.0.0",
+  "description": "Builtin runner for atom-js-debug. Use debug url to debug apps.",
+  "keywords": [],
+  "activationHooks": ["atom-js-debug:auto-start"],
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.17.0 <2.0.0"
+  },
+  "consumedServices": {
+    "atom-js-debug": {
+      "versions": {
+        "1.0.0": "atomDebugService"
+      }
+    }
+  },
+  "dependencies": {
+    "underscore": "^1.0.0"
+  }
+}

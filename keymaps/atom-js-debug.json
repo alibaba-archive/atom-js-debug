@@ -1,0 +1,8 @@
+{
+  "atom-workspace": {
+      "f8": "atom-js-debug:resume-or-pause",
+      "f10": "atom-js-debug:step-over",
+      "f11": "atom-js-debug:step-into",
+      "shift-f11": "atom-js-debug:step-out"
+  }
+}

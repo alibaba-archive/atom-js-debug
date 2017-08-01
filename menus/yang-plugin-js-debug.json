@@ -1,0 +1,14 @@
+
+{
+    "menu": [{
+        "label": "Packages",
+        "submenu": [
+            { "label": "JS Debug",
+              "submenu": [
+                {"label": "Show",
+                "command": "atom-js-debug:start"}
+              ]
+            }
+        ]
+    }]
+}

@@ -1,0 +1,291 @@
+@import "ui-variables";
+
+.debug-panel {
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    -webkit-user-select: text;
+    >.debug-main {
+        display: flex;
+        flex:1;
+        flex-direction: column;
+        height: 100%;
+        max-width: 100%;
+        >.control-bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex:none;
+            >.tools {
+                flex: none;
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                >.btn-resume {
+                    background-image: url("atom://atom-js-debug/res/resume.svg");
+                }
+                >.btn-pause {
+                    background-image: url("atom://atom-js-debug/res/pause.svg");
+                }
+                >.btn-step-into {
+                    background-image: url("atom://atom-js-debug/res/step-into.svg");
+                }
+                >.btn-step-over {
+                    background-image: url("atom://atom-js-debug/res/step-over.svg");
+                }
+                >.btn-step-out {
+                    background-image: url("atom://atom-js-debug/res/step-out.svg");
+                }
+                >.btn-stop {
+                    background-image: url("atom://atom-js-debug/res/stop.svg");
+                }
+                >.btn-config {
+                    //waiting a img
+                }
+                .debug-tool {
+                    flex: none;
+                    width: 32px;
+                    height: 28px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-size:16px;
+                    background-position: 50%;
+                    background-repeat: no-repeat;
+                }
+            }
+            >.debug-entry {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                flex: none;
+                .entry-select {
+                    line-height: 30px;
+                    height: 30px;
+                    flex:none;
+                    display: flex;
+                    flex-direction: row;
+                    background: @button-background-color;
+                    border:1px solid @button-border-color;
+                    border-radius: 3px;
+                    >select {
+                        // height: 20px;
+                        // max-width: 120px;
+                        flex:1;
+                        background-color: @button-background-color;
+                        color: @text-color;
+                        //border: 1px solid @button-border-color;
+                        border: 0px;
+                        width: 100px;
+                        //margin-left: 10px;
+                    }
+                }
+            }
+        }
+        >.display-panel {
+            overflow-y: scroll;
+            display: flex;
+            flex-direction: column;
+            height:100%;
+            .space-panel {
+                flex:1;
+            }
+            .callframe-panel,.breakpoint-panel,.watch-panel,.scope-panel,.file-panel,.exceptionsItem {
+                flex:none;
+            }
+            .console-panel {
+                .panel-content {
+                    max-height:200px;
+                    overflow: auto;
+                }
+            }
+            .consoleItem {
+                border: 1px solid rgba(24, 26, 31, 0.35);
+            }
+            .callframeItem,.breakpointItem,.watchItem,.scopeItem,.exceptionsItem,.consoleItem,.thisItem,.fileItem {
+                display: flex;
+                background-color: @pane-item-background-color;
+                padding: 3px 10px 3px 20px;
+                overflow: hidden;
+                align-items: flex-start;
+                font-family: Monaco,Menlo,Consolas,Droid Sans Mono,Inconsolata,Courier New,monospace,Droid Sans Fallback;
+                .list-item {
+                    line-height: 16px;
+                }
+                .list-tree {
+                    max-width: 95%;
+                }
+                .list-nested-item {
+                    flex:1;
+                }
+                .has-collapsable-children {
+                    flex:1;
+                }
+                .debug-getter {
+                    cursor: pointer;
+                    color: @text-color-info;
+                }
+                span {
+                    min-width:20px;
+                    overflow: hidden;
+                    text-overflow:ellipsis;
+                    white-space: nowrap;
+                }
+                span.badge {
+                    flex:none;
+                }
+                .space {
+                    flex: 1;
+                    max-width: 2000px;
+                }
+                span input {
+                    margin-right: 5px;
+                }
+                >.watch-root {
+                    flex:1;
+                }
+                >.delete-watch,.delete-breakpoint {
+                    display: none;
+                    height: 16px;
+                    flex:none;
+                }
+                .clickable {
+                    cursor: pointer;
+                }
+            }
+            .selected {
+                background-color: @background-color-selected
+            }
+            .panel-heading {
+                display: flex;
+                //justify-content: space-between;
+                border: 0px;
+                padding: 5px 20px 5px;
+                background-color: @inset-panel-background-color;
+                //font-family: Monaco,Menlo,Consolas,Droid Sans Mono,Inconsolata,Courier New,monospace,Droid Sans Fallback;
+                >.panel-button:active {
+                    color: @button-background-color-hover;
+                }
+                >.loading-spinner-mini {
+                    height: 12px;
+                    width: 12px;
+                    font-size: 12px;
+                }
+                >.loadding-spinner-ok {
+                    background: radial-gradient(#64c42d 0.1em, transparent 0.11em)
+                }
+                >.loadding-spinner-ok::before,.loadding-spinner-ok::after {
+                    border: 0px solid;
+                }
+            }
+            .panel-heading.collapsed {
+                background-image: url("atom://atom-js-debug/res/collapsed.svg");
+                background-repeat: no-repeat;
+            }
+            .panel-heading:not(.collapsed) {
+                background-image: url("atom://atom-js-debug/res/expanded.svg");
+                background-repeat: no-repeat;
+            }
+        }
+        .watchItem:hover .delete-watch {
+            display: inline-block;
+        }
+        .breakpointItem:hover .delete-breakpoint {
+            display: inline-block;
+        }
+        .text-color-info {
+            color: @text-color-info;
+        }
+        .text-preview {
+            color: @text-color-subtle;
+        }
+        .hide {
+            display: none;
+        }
+        .text-color-error {
+            color: @text-color-error;
+        }
+        .panel-button {
+            cursor: pointer;
+            position: absolute;
+            right: 5px;
+            top: 5px;
+        }
+        .item-button {
+            cursor: pointer;
+        }
+    }
+    .mask {
+        background-color: rgba(0,0,0,0);
+        text-align: center;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        > div {
+            height: 40%;
+        }
+    }
+}
+atom-text-editor.editor .atom-js-debug-break-default {
+    width: 16px;
+    background: url('atom://atom-js-debug/res/breakpoint-dark.svg') left center no-repeat;
+}
+
+atom-text-editor.editor .atom-js-debug-break-disable {
+    width: 16px;
+    background: url('atom://atom-js-debug/res/breakpoint-disabled-dark.svg') left center no-repeat;
+}
+
+atom-text-editor.editor .atom-js-debug-current-break {
+    width: 16px;
+    background: url('atom://atom-js-debug/res/current-and-breakpoint-dark.svg') left center no-repeat;
+}
+
+atom-text-editor.editor .atom-js-debug-current-line {
+    width: 16px;
+    background: url('atom://atom-js-debug/res/current-arrow-dark.svg') left center no-repeat;
+}
+
+atom-text-editor.editor .atom-js-debug-break-conditional {
+    width: 16px;
+    background: url('atom://atom-js-debug/res/breakpoint-conditional-dark.svg') left center no-repeat;
+}
+
+atom-text-editor.editor .atom-js-debug-break-hint {
+    width: 16px;
+    background: url('atom://atom-js-debug/res/breakpoint-hint.svg') left center no-repeat;
+}
+
+atom-text-editor.editor .atom-js-debug-break-activate {
+    width: 16px;
+    background: url('atom://atom-js-debug/res/breakpoints-activate.svg') left center no-repeat;
+}
+
+atom-text-editor.editor .atom-js-debug-break-activate-inverse {
+    width: 16px;
+    background: url('atom://atom-js-debug/res/breakpoints-activate-inverse.svg') left center no-repeat;
+}
+
+atom-text-editor.editor .atom-js-debug-break-unsupported {
+    width: 16px;
+    background: url('atom://atom-js-debug/res/breakpoint-unsupported-dark.svg') left center no-repeat;
+}
+
+atom-text-editor.editor .atom-js-debug-break-unverified {
+    width: 16px;
+    background: url('atom://atom-js-debug/res/breakpoint-unverified-dark.svg') left center no-repeat;
+}
+
+atom-text-editor.editor .debug-highlight-background {
+    background-color: rgba(15, 130, 230, 0.3) !important;
+}
+
+atom-text-editor.editor .debug-background {
+    background-color: rgba(173, 124, 11, 0.3) !important;
+}

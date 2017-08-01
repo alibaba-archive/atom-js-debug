@@ -1,0 +1,23 @@
+{
+  "name": "local-node-inspect-debugger",
+  "main": "./lib/local-node-inspect-debugger",
+  "version": "0.0.0",
+  "description": "Builtin runner for atom-js-debug. Use node --inspect to debug apps.",
+  "keywords": [],
+  "activationHooks": ["atom-js-debug:auto-start"],
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.17.0 <2.0.0"
+  },
+  "consumedServices": {
+    "atom-js-debug": {
+      "versions": {
+        "1.0.0": "atomDebugService"
+      }
+    }
+  },
+  "dependencies": {
+    "underscore": "^1.0.0",
+    "semver": "^5.3.0"
+  }
+}
